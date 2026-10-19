@@ -1,8 +1,9 @@
 from load_image import ft_load
 
-print(ft_load("../subject/landscape.jpg"))
 
-print("/n#######################################################/n")
+def main() -> None:
+    print(ft_load("../subject/landscape.jpg"))
 
-print(ft_load("../subject/animal.jpeg"))
 
+if __name__ == "__main__":
+    main()

@@ -1,13 +1,12 @@
-from give_bmi import apply_limit, give_bmi
-
-height = [2.71, 1.15]
-weight = [165.3, 38.4]
-
-bmi = give_bmi(height, weight)
-print(bmi, type(bmi))
-print(apply_limit(bmi, 26))
+from array2D import slice_me
 
 
-# $> python tester.py
-# [22.507863455018317, 29.0359168241966] <class 'list'>
-# [False, True]
+def main() -> None:
+    family = [[1.80, 78.4], [2.15, 102.7], [2.10, 98.5], [1.88, 75.2]]
+
+    print(slice_me(family, 0, 2))
+    print(slice_me(family, 1, -2))
+
+
+if __name__ == "__main__":
+    main()

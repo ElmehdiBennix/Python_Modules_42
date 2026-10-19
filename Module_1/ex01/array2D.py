@@ -1,44 +1,50 @@
+"""Module for slicing and determining dimensions of 2D arrays."""
+
+import numpy as np
+
+
 def slice_me(family: list, start: int, end: int) -> list:
-    """test"""
+    """Slice a 2D array and display its dimensions before and after.
 
-    if not isinstance(family, list):
-        raise TypeError("Error: wrong type value family should be a list")
+    Args:
+        family: A 2D list where all rows must have identical lengths.
+        start: Starting slice index (integer).
+        end: Ending slice index (integer).
 
-    if not isinstance(start, int) or not isinstance(end, int):
-        raise TypeError("Error: wrong type value start or end should be a int")
+    Returns:
+        A truncated 2D list based on start and end slice parameters.
+    """
 
-    size = 0
+    try:
+        if not isinstance(family, list):
+            raise TypeError("family must be a list.")
 
-    if len(family) > 0:
-        lenght = None
+        if not isinstance(start, int) or isinstance(start, bool):
+            raise TypeError("start must be an integer.")
 
+        if not isinstance(end, int) or isinstance(end, bool):
+            raise TypeError("end must be an integer.")
+
+        if len(family) == 0:
+            raise ValueError("family list cannot be empty.")
+
+        row_len = None
         for idx, row in enumerate(family):
             if not isinstance(row, list):
-                raise TypeError(
-                    f"Error: wrong type value at index {idx} should be a list"
-                )
+                raise TypeError(f"Element at index {idx} must be a list.")
+            if row_len is None:
+                row_len = len(row)
+            elif len(row) != row_len:
+                raise ValueError("All rows must have the same size.")
 
-            if lenght == None:
-                lenght = len(row)
-            elif len(row) != lenght:
-                raise ValueError("Error: lenght of the arrays dont match")
+        arr = np.array(family)
+        print(f"My shape is : {arr.shape}")
 
-        size = lenght
+        sliced_arr = arr[start:end]
+        print(f"My new shape is : {sliced_arr.shape}")
 
-    print(f"My shape is : ({len(family)}, {size})")
+        return sliced_arr.tolist()
 
-    sliced_family = family[start:end]
-
-    sliced_family_lenght = len(sliced_family[0]) if (len(sliced_family) > 0) else 0
-
-    print(f"My new shape is :({len(sliced_family)}, {sliced_family_lenght})")
-
-    return sliced_family
-
-
-family = [[1.50, 75.4], [2.15, 102.7], [2.10, 98.5], [1.88, 75.21]]
-
-
-print(slice_me(family, 0, 2))
-
-print(slice_me(family, 1, -2))
+    except (TypeError, ValueError) as error:
+        print(f"Error in slice_me: {error}")
+        return []

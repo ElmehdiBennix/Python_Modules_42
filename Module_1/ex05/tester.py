@@ -1,41 +1,65 @@
+"""Module to test and visualize all image manipulation filters."""
+
 import matplotlib.pyplot as plt
 from load_image import ft_load
-from numpy import array
 from pimp_image import ft_blue, ft_green, ft_grey, ft_invert, ft_red
 
-array = ft_load("../subject/landscape.jpg")
 
-plt.imshow(array.squeeze(), cmap="gray")
-plt.show()
+def main() -> None:
+    """Load an image, apply all color filters, and print their docstrings."""
+    array = ft_load("../subject/landscape.jpg")
+    if array is None:
+        return
 
-test = ft_invert(array)
+    # Original Image
+    plt.figure("Original")
+    plt.imshow(array)
+    plt.axis("off")
+    plt.show()
 
-plt.imshow(test.squeeze(), cmap="gray")
-plt.show()
+    # Inverted Image
+    inverted = ft_invert(array)
+    plt.figure("Inverted")
+    plt.imshow(inverted)
+    plt.axis("off")
+    plt.show()
 
-test = ft_red(array)
+    # Red Filter
+    red_img = ft_red(array)
+    plt.figure("Red Filter")
+    plt.imshow(red_img)
+    plt.axis("off")
+    plt.show()
 
-plt.imshow(test.squeeze(), cmap="gray")
-plt.show()
+    # Green Filter
+    green_img = ft_green(array)
+    plt.figure("Green Filter")
+    plt.imshow(green_img)
+    plt.axis("off")
+    plt.show()
 
-test = ft_green(array)
+    # Blue Filter
+    blue_img = ft_blue(array)
+    plt.figure("Blue Filter")
+    plt.imshow(blue_img)
+    plt.axis("off")
+    plt.show()
 
-plt.imshow(test.squeeze(), cmap="gray")
-plt.show()
+    # Grey Filter (2D or single channel needs 'gray' cmap)
+    grey_img = ft_grey(array)
+    plt.figure("Grey Filter")
+    plt.imshow(grey_img, cmap="gray")
+    plt.axis("off")
+    plt.show()
 
-test = ft_blue(array)
-
-plt.imshow(test.squeeze(), cmap="gray")
-plt.show()
-
-test = ft_grey(array)
-
-plt.imshow(test.squeeze(), cmap="gray")
-plt.show()
+    # Print docstrings
+    print("\n--- Function Docstrings ---")
+    print(f"ft_invert:\n{ft_invert.__doc__}")
+    print(f"ft_red:\n{ft_red.__doc__}")
+    print(f"ft_green:\n{ft_green.__doc__}")
+    print(f"ft_blue:\n{ft_blue.__doc__}")
+    print(f"ft_grey:\n{ft_grey.__doc__}")
 
 
-print(ft_invert.__doc__)
-print(ft_red.__doc__)
-print(ft_green.__doc__)
-print(ft_red.__doc__)
-print(ft_grey.__doc__)
+if __name__ == "__main__":
+    main()
