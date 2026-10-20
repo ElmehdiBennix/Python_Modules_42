@@ -45,7 +45,9 @@ def ft_rotate(
             raise ValueError("Start must be strictly less than end.")
 
         cropped = img_array[y_start:y_end, x_start:x_end, 0:1]
-        arr = cropped.squeeze()
+        # Drop only the channel axis: squeeze() would also collapse a crop
+        # whose width or height is 1, leaving an array with less than 2 axes.
+        arr = cropped[:, :, 0]
 
         rows, columns = arr.shape
         out = np.empty((columns, rows), dtype=arr.dtype)

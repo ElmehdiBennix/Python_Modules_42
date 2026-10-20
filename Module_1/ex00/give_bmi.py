@@ -1,7 +1,5 @@
 """Module for calculating BMI and applying threshold limits."""
 
-from decimal import DivisionByZero
-
 import numpy as np
 
 
@@ -45,7 +43,7 @@ def give_bmi(
         bmi_results = w_arr / (h_arr**2)
         return bmi_results.tolist()
 
-    except (TypeError, ValueError, DivisionByZero) as error:
+    except (TypeError, ValueError) as error:
         print(f"Error in give_bmi: {error}")
         return []
 
