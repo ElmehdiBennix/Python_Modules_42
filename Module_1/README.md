@@ -101,12 +101,42 @@ cd ex04 && ../.venv/bin/python rotate.py
 cd ex05 && ../.venv/bin/python tester.py
 ```
 
-With the virtual environment activated (`make activate`), `python tester.py` works
-directly.
+With the virtual environment activated, `python tester.py` works directly.
 
 > **Headless machines** — `ex03`, `ex04` and `ex05` open Matplotlib windows. On a
 > server without a display, force a non-interactive backend:
-> `MPLBACKEND=Agg python zoom.py`.
+> `MPLBACKEND=Agg python zoom.py`. The `make test` target already does this.
+
+---
+
+## Virtual environment
+
+The project works **without activating anything** — `uv run` and `make` resolve the
+interpreter themselves:
+
+```bash
+uv run python ex00/tester.py
+make test
+make run EX=ex03
+```
+
+To get a shell with the virtual environment active instead:
+
+```bash
+make activate
+```
+
+This opens a **new shell** with `.venv` activated. Type `exit` to return to the
+previous one.
+
+> A `make` recipe always runs in its own subshell, so it can never modify the
+> environment of the shell that invoked it. `make activate` therefore starts a new
+> shell rather than altering the current one. To activate the venv in the current
+> shell, run the activation directly:
+>
+> ```bash
+> source .venv/bin/activate
+> ```
 
 ---
 
@@ -116,8 +146,8 @@ directly.
 |---|---|
 | `make help` | List all available targets |
 | `make install` | Sync the virtual environment (`uv sync`) |
-| `make activate` | Activate the virtual environment |
-| `make test` | Run the tester of every exercise |
+| `make activate` | Open a shell with the virtual environment activated |
+| `make test` | Run the tester of every exercise (headless) |
 | `make lint` | Check the code norm (flake8) |
 | `make norminette` | Alias of `make lint` |
 | `make format` | Format the code with black (79 characters, norm compatible) |
