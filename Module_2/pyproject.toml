@@ -1,27 +1,11 @@
 [project]
 name = "module-2"
 version = "0.1.0"
-description = "Add your description here"
+description = "CSV data loading, analysis, and visualization with pandas and Matplotlib"
 readme = "README.md"
-authors = [
-    { name = "Rambeau", email = "bennixmehdi@gmail.com" }
-]
+authors = [{ name = "Rambeau", email = "bennixmehdi@gmail.com" }]
 requires-python = ">=3.10"
-dependencies = [
-    "flake8>=7.4.1",
-    "matplotlib>=3.10.9",
-    "pandas>=2.3.3",
-    "seaborn>=0.13.2",
-]
+dependencies = ["matplotlib>=3.10.9", "pandas>=2.3.3"]
 
 [dependency-groups]
-dev = [
-    "pandas-stubs>=2.3.3.260113",
-]
-
-# [project.scripts]
-# module-2 = "module_2:main"
-# 
-# [build-system]
-# requires = ["uv_build>=0.12.19,<0.13.0"]
-# build-backend = "uv_build"
+dev = ["flake8>=7.4.1"]

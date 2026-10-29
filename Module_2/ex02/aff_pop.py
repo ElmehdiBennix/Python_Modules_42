@@ -1,41 +1,58 @@
+"""Compare France and Belgium population projections."""
+
 import matplotlib.pyplot as plt
 from load_csv import load
 from matplotlib.ticker import FuncFormatter
 
 
+def format_population(value, _position):
+    """Format population axis values in millions."""
+    return f"{int(value / 1e6)}M"
+
+
 def main():
-    data = load("../subject/population_total.csv")
-    if data is None:
-        return
+    """Plot population projections for France and Belgium."""
+    try:
+        data = load("../subject/population_total.csv")
+        if data is None:
+            return
 
-    france = data.loc["France"]
-    belgium = data.loc["Belgium"]
+        if "France" not in data.index or "Belgium" not in data.index:
+            print("Error: required country data was not found")
+            return
 
-    # Convert "29M" → 29000000, "3.25M" → 3250000
-    france = france.apply(lambda x: float(x.replace("M", "")) * 1e6)
-    belgium = belgium.apply(lambda x: float(x.replace("M", "")) * 1e6)
+        france = data.loc["France"]
+        belgium = data.loc["Belgium"]
 
-    # Filter years 1800-2050
-    years = france.index[(france.index >= "1800") & (france.index <= "2050")]
-    france = france[years]
-    belgium = belgium[years]
+        # Convert "29M" → 29000000, "3.25M" → 3250000
+        france = france.apply(lambda x: float(x.replace("M", "")) * 1e6)
+        belgium = belgium.apply(lambda x: float(x.replace("M", "")) * 1e6)
 
-    plt.plot(belgium.index, belgium.values, label="Belgium", color="blue")
-    plt.plot(france.index, france.values, label="France", color="green")
+        # Filter years 1800-2050
+        years = france.index[
+            (france.index >= "1800") & (france.index <= "2050")
+        ]
+        france = france[years]
+        belgium = belgium[years]
 
-    plt.title("Population Projections")
-    plt.xlabel("Year")
-    plt.ylabel("Population")
+        plt.plot(belgium.index, belgium.values, label="Belgium", color="blue")
+        plt.plot(france.index, france.values, label="France", color="green")
 
-    # Format y-axis as 20M, 40M, 60M
-    ax = plt.gca()
-    ax.yaxis.set_major_formatter(FuncFormatter(lambda x, p: f"{int(x / 1e6)}M"))
-    plt.yticks([0, 20000000, 40000000, 60000000])
+        plt.title("Population Projections")
+        plt.xlabel("Year")
+        plt.ylabel("Population")
 
-    plt.xticks(france.index[::20], rotation=45)
-    plt.legend(loc="lower right")
-    plt.tight_layout()
-    plt.show()
+        # Format y-axis as 20M, 40M, 60M
+        ax = plt.gca()
+        ax.yaxis.set_major_formatter(FuncFormatter(format_population))
+        plt.yticks([0, 20000000, 40000000, 60000000])
+
+        plt.xticks(france.index[::20], rotation=45)
+        plt.legend(loc="lower right")
+        plt.tight_layout()
+        plt.show()
+    except (KeyError, TypeError, ValueError, OSError) as error:
+        print(f"Error: could not plot population data: {error}")
 
 
 if __name__ == "__main__":

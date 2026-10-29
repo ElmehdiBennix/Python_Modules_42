@@ -1,3 +1,5 @@
+"""Define the Baratheon and Lannister classes used by DiamondTrap."""
+
 from S1E9 import Character
 
 
@@ -8,7 +10,7 @@ class Baratheon(Character):
         self,
         first_name: str,
         is_alive: bool = True,
-        family_name: str = "baratheon",
+        family_name: str = "Baratheon",
         eyes: str = "brown",
         hairs: str = "dark",
     ):
@@ -17,10 +19,14 @@ class Baratheon(Character):
 
         Args:
             first_name (str): The character's given name.
-            is_alive (bool): The character's life status, optional (default: True).
-            family_name (str): The family house name, optional (default: "baratheon").
-            eyes (str): The color of the character's eyes, optional (default: "brown").
-            hairs (str): The color/type of the character's hair, optional (default: "dark").
+            is_alive (bool): The character's life status,
+                optional (default: True).
+            family_name (str): The family house name,
+                optional (default: "Baratheon").
+            eyes (str): The color of the character's eyes,
+                optional (default: "brown").
+            hairs (str): The color/type of the character's hair,
+                optional (default: "dark").
         Raises:
             TypeError: if type doesn't match class attribute.
         """
@@ -38,13 +44,17 @@ class Baratheon(Character):
 
     def __str__(self) -> str:
         """
-        Return a human-readable string representation of the Baratheon character.
+        Return a human-readable Baratheon character string.
         """
-        return f"Baratheon {self.first_name}: {self.eyes} eyes and {self.hairs} hairs is {'alive' if self.is_alive else 'dead'}"
+        state = "alive" if self.is_alive else "dead"
+        return (
+            f"Baratheon {self.first_name}: {self.eyes} eyes and "
+            f"{self.hairs} hairs is {state}"
+        )
 
     def __repr__(self) -> str:
         """
-        Return an official string representation (vector format) of the Baratheon character traits.
+        Return the vector representation of the Baratheon character traits.
         """
         return f"Vector: ('{self.family_name}', '{self.eyes}', '{self.hairs}')"
 
@@ -75,10 +85,14 @@ class Lannister(Character):
 
         Args:
             first_name (str): The character's given name.
-            is_alive (bool): The character's life status, optional (default: True).
-            family_name (str): The family house name, optional (default: "Lannister").
-            eyes (str): The color of the character's eyes, optional (default: "blue").
-            hairs (str): The color/type of the character's hair, optional (default: "light").
+            is_alive (bool): The character's life status,
+                optional (default: True).
+            family_name (str): The family house name,
+                optional (default: "Lannister").
+            eyes (str): The color of the character's eyes,
+                optional (default: "blue").
+            hairs (str): The color/type of the character's hair,
+                optional (default: "light").
         Raises:
             TypeError: if type doesn't match class attribute.
         """
@@ -96,24 +110,29 @@ class Lannister(Character):
 
     def __str__(self) -> str:
         """
-        Return a human-readable string representation of the Lannister character.
+        Return a human-readable Lannister character string.
         """
-        return f"Lannister {self.first_name}: {self.eyes} eyes and {self.hairs} hairs is {'alive' if self.is_alive else 'dead'}"
+        state = "alive" if self.is_alive else "dead"
+        return (
+            f"Lannister {self.first_name}: {self.eyes} eyes and "
+            f"{self.hairs} hairs is {state}"
+        )
 
     def __repr__(self) -> str:
         """
-        Return an official string representation (vector format) of the Lannister character traits.
+        Return the vector representation of the Lannister character traits.
         """
         return f"Vector: ('{self.family_name}', '{self.eyes}', '{self.hairs}')"
 
     @classmethod
     def create_lannister(cls, first_name: str, is_alive: bool = True):
         """
-        Alternative constructor to create a Lannister character with default traits.
+        Alternative constructor for a Lannister with default traits.
 
         Args:
             first_name (str): The character's given name.
-            is_alive (bool): The character's life status, optional (default: True).
+            is_alive (bool): The character's life status,
+                optional (default: True).
         Returns:
             Lannister: A new instance of the Lannister class.
         Raises:

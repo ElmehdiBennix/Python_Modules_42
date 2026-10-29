@@ -57,6 +57,7 @@ def ft_rotate(
                 out[j, i] = arr[i, j]
 
         print(f"New shape after Transpose: {out.shape}")
+        print(out)
         return out
 
     except (TypeError, ValueError, IndexError) as error:

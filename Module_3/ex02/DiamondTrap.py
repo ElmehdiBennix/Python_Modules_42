@@ -1,72 +1,29 @@
+"""Define the King class through multiple inheritance."""
+
 from S1E7 import Baratheon, Lannister
 
 
 class King(Baratheon, Lannister):
-    """Summary."""
+    """Represent a king with mutable eye and hair characteristics."""
 
     def __init__(self, first_name: str):
-        """
-        Summary.
-
-        Args:
-            first_name (str): Description.
-            is_alive (bool): Description, optional (default: True).
-            family_name (str): Description, optional (default: "baratheon").
-            eyes (str): Description, optional (default: "brown").
-            hairs (str): Description, optional (default: "dark").
-        Raises:
-            TypeError: if type doesn't match class attribute.
-        """
+        """Initialize a King with the Baratheon defaults."""
         super().__init__(first_name)
 
     def get_eyes(self):
-        """
-        .
-
-        Return:
-            Hair color string.
-        """
+        """Return the king's eye color."""
         return self.eyes
 
     def get_hairs(self):
-        """
-        .
-
-        Return:
-            Hair color string.
-        """
+        """Return the king's hair color."""
         return self.hairs
 
     def set_eyes(self, eyes: str):
-        """
-        Summary.
-
-        Args:
-            eyes (str): Description.
-        Raises:
-            TypeError: Description.
-        Return:
-            str: The updated eyes string.
-        """
-        if not isinstance(eyes, str):
-            raise TypeError("eyes must be a string type.")
-
+        """Set and return the king's eye color."""
         self.eyes = eyes
         return self.eyes
 
     def set_hairs(self, hairs: str):
-        """
-        Summary.
-
-        Args:
-            hairs (str): Description.
-        Raises:
-            TypeError: Description.
-        Return:
-            str: The updated hairs string.
-        """
-        if not isinstance(hairs, str):
-            raise TypeError("hairs must be a string type.")
-
+        """Set and return the king's hair color."""
         self.hairs = hairs
         return self.hairs

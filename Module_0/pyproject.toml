@@ -1,16 +1,11 @@
 [project]
 name = "module-0"
 version = "0.1.0"
-description = "Training Piscine Python for Data Science - Module 0 exercises"
+description = "Python fundamentals covering data structures, functions, command-line input, generators, and package creation"
 readme = "README.md"
 authors = [{ name = "Rambeau", email = "bennixmehdi@gmail.com" }]
 requires-python = ">=3.10"
 dependencies = []
 
-[tool.uv]
-package = false
-
 [dependency-groups]
-dev = [
-    "flake8>=7.4.1",
-]
+dev = ["flake8>=7.4.1"]

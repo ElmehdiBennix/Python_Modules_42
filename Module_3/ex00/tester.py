@@ -1,3 +1,5 @@
+"""Exercise 00 demonstration for the Character and Stark classes."""
+
 from S1E9 import Stark
 
 

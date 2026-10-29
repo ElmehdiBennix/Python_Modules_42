@@ -1,11 +1,12 @@
+"""Exercise 02 demonstration for the multiple-inheritance King class."""
+
 from DiamondTrap import King
 
 
 def main() -> None:
-
     try:
         print(King.__mro__)
-        
+
         Joffrey = King("Joffrey")
         print(Joffrey.__dict__)
         Joffrey.set_eyes("blue")
@@ -15,6 +16,7 @@ def main() -> None:
         print(Joffrey.__dict__)
     except TypeError as error:
         print(f"King Error: {error}")
-        
+
+
 if __name__ == "__main__":
     main()

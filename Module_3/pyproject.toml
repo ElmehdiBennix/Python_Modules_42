@@ -1,10 +1,11 @@
 [project]
 name = "module-3"
 version = "0.1.0"
-description = "Add your description here"
+description = "Object-oriented Python exercises covering inheritance and operator protocols"
 readme = "README.md"
-authors = [
-    { name = "Rambeau", email = "bennixmehdi@gmail.com" }
-]
+authors = [{ name = "Rambeau", email = "bennixmehdi@gmail.com" }]
 requires-python = ">=3.10"
 dependencies = []
+
+[dependency-groups]
+dev = ["flake8>=7.4.1"]

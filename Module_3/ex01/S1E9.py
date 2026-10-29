@@ -1,3 +1,5 @@
+"""Provide the Character and Stark classes for the family exercises."""
+
 from abc import ABC, abstractmethod
 
 
@@ -10,7 +12,8 @@ class Character(ABC):
 
         Args:
             first_name (str): The character's given name.
-            is_alive (bool): The character's current life status, optional (default: True).
+            is_alive (bool): The character's current life status,
+                optional (default: True).
         Raises:
             TypeError: if type doesn't match class attribute.
         """
@@ -28,7 +31,8 @@ class Character(ABC):
         abstract method that handles death logic.
 
         Raises:
-            NotImplementedError: If the subclass does not implement this method.
+            NotImplementedError: If the subclass does not implement
+                this method.
         """
         raise NotImplementedError("test")
 
@@ -42,7 +46,8 @@ class Stark(Character):
 
         Args:
             first_name (str): The Stark's given name.
-            is_alive (bool): The Stark's current life status, optional (default: True).
+            is_alive (bool): The Stark's current life status,
+                optional (default: True).
         Raises:
             TypeError: if type doesn't match class attribute.
         """

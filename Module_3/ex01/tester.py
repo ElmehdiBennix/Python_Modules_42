@@ -1,3 +1,5 @@
+"""Exercise 01 demonstration for the two character families."""
+
 from S1E7 import Baratheon, Lannister
 
 
@@ -17,7 +19,10 @@ def main() -> None:
     print(Cersei.is_alive)
     print("---")
     Jaine = Lannister.create_lannister("Jaine", True)
-    print(f"Name : {Jaine.first_name, type(Jaine).__name__}, Alive : {Jaine.is_alive}")
+    print(
+        f"Name : {Jaine.first_name, type(Jaine).__name__}, "
+        f"Alive : {Jaine.is_alive}"
+    )
 
 
 if __name__ == "__main__":
