@@ -1,0 +1,13 @@
+[project]
+name = "module-4"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [{ name = "Rambeau", email = "bennixmehdi@gmail.com" }]
+requires-python = ">=3.10"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "flake8>=7.4.1",
+]

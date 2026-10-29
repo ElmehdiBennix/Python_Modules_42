@@ -7,5 +7,3 @@ exclude =
     .pytest_cache,
     .mypy_cache,
     .ruff_cache
-# The 42 norm is PEP8 with a maximum of 79 characters per line.
-max-line-length = 79

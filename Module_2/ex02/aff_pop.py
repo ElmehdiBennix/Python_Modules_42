@@ -1,8 +1,6 @@
-from turtle import color
-
 import matplotlib.pyplot as plt
-from matplotlib.ticker import FuncFormatter
 from load_csv import load
+from matplotlib.ticker import FuncFormatter
 
 
 def main():
@@ -31,7 +29,7 @@ def main():
 
     # Format y-axis as 20M, 40M, 60M
     ax = plt.gca()
-    ax.yaxis.set_major_formatter(FuncFormatter(lambda x, p: f"{int(x/1e6)}M"))
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda x, p: f"{int(x / 1e6)}M"))
     plt.yticks([0, 20000000, 40000000, 60000000])
 
     plt.xticks(france.index[::20], rotation=45)

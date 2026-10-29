@@ -115,12 +115,12 @@ def ft_grey(array: np.ndarray) -> np.ndarray:
         if array.ndim != 3 or array.shape[2] != 3:
             raise ValueError(
                 "Input must be a 3D array with 3 colour channels.")
-        grey = array.copy()
+        arr_copy = array.copy()
         value = np.mean(array, axis=2)
-        grey[:, :, 0] = value
-        grey[:, :, 1] = value
-        grey[:, :, 2] = value
-        return grey
+        arr_copy[:, :, 0] = value
+        arr_copy[:, :, 1] = value
+        arr_copy[:, :, 2] = value
+        return arr_copy
     except (TypeError, ValueError, IndexError) as error:
         print(f"Error in ft_grey: {error}")
         return np.array([])
