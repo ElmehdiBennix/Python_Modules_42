@@ -2,13 +2,19 @@
 
 ## Overview
 
-Module 4 focuses on placing state deliberately through keyword dispatch,
-closures, decorator factories, and dataclasses. Detailed explanations and
-reproducible transcripts are kept in [`Docs/`](Docs/).
+Module 4 places state deliberately. The subject moves from keyword dispatch,
+through closures and decorator factories, to dataclasses, and every exercise asks
+the same question in a different form: who owns this value, and when does it
+change? Detailed explanations and reproducible transcripts are kept in
+[`Docs/`](Docs/).
 
 ## Objectives
 
-
+By the end of the module, we can dispatch work through the values of `**kwargs`,
+compute order statistics without a library, keep state alive in a closure cell,
+rebuild a decorator factory from its three scopes, and declare derived state with
+`field(init=False)` and `__post_init__`. We also learn that the subject requires a
+docstring on every function and class, and that flake8 does not check that rule.
 
 ## Exercises
 

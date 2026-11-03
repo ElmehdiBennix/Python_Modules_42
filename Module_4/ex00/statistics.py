@@ -1,10 +1,18 @@
+"""Print statistics computed from an arbitrary quantity of numbers."""
+
 from collections.abc import Callable
 from typing import Any
 
 
 def ft_statistics(*args: Any, **kwargs: Any) -> None:
+    """Print each statistic named in the values of kwargs, or ERROR.
 
-    def mean(data: list):
+    Unknown names are ignored. Undefined or non-numeric data prints ERROR
+    once per recognised request rather than raising.
+    """
+
+    def mean(data: list) -> float:
+        """Return the arithmetic mean of data."""
         return sum(data) / len(data)
 
     def median(data: list) -> float:
@@ -27,11 +35,13 @@ def ft_statistics(*args: Any, **kwargs: Any) -> None:
             result.append(float(data[low] + gap * (pos - low)))
         return result
 
-    def var(data: list):
+    def var(data: list) -> float:
+        """Return the population variance of data."""
         m = mean(data)
         return sum((x - m) ** 2 for x in data) / len(data)
 
-    def std(data: list):
+    def std(data: list) -> float:
+        """Return the population standard deviation of data."""
         return var(data) ** 0.5
 
     states: dict[str, Callable[[list], Any]] = {
@@ -46,7 +56,7 @@ def ft_statistics(*args: Any, **kwargs: Any) -> None:
         data = sorted(args)
     except TypeError:
         data = []
-    
+
     for name in kwargs.values():
         handler = states.get(name) if isinstance(name, str) else None
         if handler is None:
@@ -57,4 +67,4 @@ def ft_statistics(*args: Any, **kwargs: Any) -> None:
         try:
             print(f"{name} : {handler(data)}")
         except (TypeError, ValueError, ZeroDivisionError):
-                print("ERROR")
+            print("ERROR")
